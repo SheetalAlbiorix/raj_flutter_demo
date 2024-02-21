@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@android:color/white" />
+
+    <!-- Your own image assets -->
+    <!-- <item>
+        <bitmap
+            android:gravity="center"
+            android:src="@mipmap/launch_image" />
+    </item> -->
+
+    <!-- Albiorix image -->
+    <item
+        android:width="72dp"
+        android:height="72dp"
+        android:drawable="@drawable/albiorix"
+        android:gravity="center" />
+</layer-list>
