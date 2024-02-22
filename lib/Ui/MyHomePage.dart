@@ -1,6 +1,7 @@
 import 'package:demo/Ui/LoginScreen.dart';
 import 'package:demo/basestring/BaseString.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -50,7 +51,10 @@ class _MyHomePageState extends State<MyHomePage> {
       builder: (BuildContext context) {
         return AlertDialog(
           title: Text(BaseString.logout),
-          content: Text(BaseString.logouttxt),
+          content: Text(
+            BaseString.logouttxt,
+            style: TextStyle(color: Theme.of(context).focusColor),
+          ),
           actions: <Widget>[
             TextButton(
               child: Text(BaseString.cancel),
@@ -63,8 +67,11 @@ class _MyHomePageState extends State<MyHomePage> {
               onPressed: () {
                 clearPrefs();
                 isLogedin.value = false;
+                Navigator.pop(context, true);
                 Navigator.of(context).pushReplacement(
                     MaterialPageRoute(builder: (context) => LoginScreen()));
+
+                /*Get.offAllNamed('/login');*/
               },
             ),
           ],
@@ -77,6 +84,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        iconTheme: IconThemeData(color: Colors.white),
         title: Text(BaseString.HomePage),
         titleTextStyle: TextStyle(
           color: Colors.white,
@@ -105,8 +113,12 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
               ListTile(
-                title: Text("About Us"),
-                leading: Icon(Icons.account_balance_outlined),
+                title: Text(
+                  "About Us",
+                ),
+                leading: Icon(
+                  Icons.account_balance_outlined,
+                ),
                 onTap: () {
                   Navigator.pushNamed(context, '/AboutUs');
                 },
@@ -146,16 +158,16 @@ class _MyHomePageState extends State<MyHomePage> {
       bottomNavigationBar: BottomNavigationBar(
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-              icon: Icon(Icons.home),
+              icon: Icon(Icons.home, color: Colors.white),
               label: "Home",
               backgroundColor: Colors.red),
           BottomNavigationBarItem(
-            icon: Icon(Icons.search),
+            icon: Icon(Icons.search, color: Colors.white),
             label: "Search",
             backgroundColor: Colors.red,
           ),
           BottomNavigationBarItem(
-              icon: Icon(Icons.logout),
+              icon: Icon(Icons.logout, color: Colors.white),
               label: "Logout",
               backgroundColor: Colors.red),
         ],

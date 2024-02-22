@@ -126,7 +126,7 @@ class _RegisterDesignState extends State<RegisterDesign> {
     return _isLoading
         ? Center(child: CircularProgressIndicator())
         : Scaffold(
-            backgroundColor: Colors.white,
+           backgroundColor: Theme.of(context).primaryColor,
             body: Padding(
               padding: EdgeInsets.all(16),
               child: Center(
@@ -135,10 +135,15 @@ class _RegisterDesignState extends State<RegisterDesign> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
                       GestureDetector(
-                        onTap: (){
-                          getImageFromGallery();
-                        },
-                          child: Image(image: AssetImage('assets/albiorix.png'),)),
+                          onTap: () {
+                            getImageFromGallery();
+                          },
+                          child: Padding(
+                            child: Image(
+                              image: AssetImage('assets/removebg.png'),
+                            ),
+                            padding: EdgeInsets.only(bottom: 16),
+                          )),
                       CustomEditTextField(
                         inputFormatters: <TextInputFormatter>[
                           FilteringTextInputFormatter.allow(
@@ -147,7 +152,7 @@ class _RegisterDesignState extends State<RegisterDesign> {
                         hintText: BaseString.firstnamehint,
                         labelText: (BaseString.firstnamelabel),
                         borderColor: Colors.red,
-                        keyboardType: TextInputType.name,
+                        keyboardType: TextInputType.text,
                         textInputAction: TextInputAction.next,
                         controller: _firstname,
                         errorMsg: erromsg,
@@ -251,6 +256,9 @@ class _RegisterDesignState extends State<RegisterDesign> {
                             });
                           }),
                       CustomEditTextField(
+                        inputFormatters: [
+                          LengthLimitingTextInputFormatter(15),
+                        ],
                         hintText: BaseString.passwordhint,
                         labelText: BaseString.passwordlabel,
                         borderColor: Colors.red,
@@ -265,7 +273,7 @@ class _RegisterDesignState extends State<RegisterDesign> {
                               : Icons.visibility_off),
                           onPressed: () {
                             setState(
-                              () {
+                                  () {
                                 passwordVisible = !passwordVisible;
                               },
                             );
@@ -285,6 +293,9 @@ class _RegisterDesignState extends State<RegisterDesign> {
                         },
                       ),
                       CustomEditTextField(
+                        inputFormatters: [
+                          LengthLimitingTextInputFormatter(15),
+                        ],
                         hintText: BaseString.confirmpasswordhint,
                         labelText: BaseString.confirmpasswordlabel,
                         borderColor: Colors.red,
@@ -299,9 +310,9 @@ class _RegisterDesignState extends State<RegisterDesign> {
                               : Icons.visibility_off),
                           onPressed: () {
                             setState(
-                              () {
+                                  () {
                                 confirmpasswordVisible =
-                                    !confirmpasswordVisible;
+                                !confirmpasswordVisible;
                               },
                             );
                           },
@@ -354,9 +365,12 @@ class _RegisterDesignState extends State<RegisterDesign> {
                                 children: [
                                   DropdownButtonFormField<String>(
                                       decoration: InputDecoration(
-                                          fillColor: Colors.white,
+                                          fillColor:
+                                              Theme.of(context).focusColor,
                                           enabledBorder: OutlineInputBorder(
                                               borderSide: BorderSide(
+                                                color: Theme.of(context)
+                                                    .focusColor,
                                                 width: 0.7,
                                               ),
                                               borderRadius:
@@ -364,8 +378,8 @@ class _RegisterDesignState extends State<RegisterDesign> {
                                           focusedBorder: OutlineInputBorder(
                                               borderSide: BorderSide(
                                                   width: 0.7,
-                                                  color: ColorScheme.light()
-                                                      .onSecondary
+                                                  color: Theme.of(context)
+                                                      .focusColor
                                                       .withOpacity(0.5)),
                                               borderRadius:
                                                   BorderRadius.circular(10))),
@@ -391,8 +405,8 @@ class _RegisterDesignState extends State<RegisterDesign> {
                                           child: Text(
                                             value,
                                             style: TextStyle(
-                                                color: ColorScheme.light()
-                                                    .onSecondary,
+                                                color: Theme.of(context)
+                                                    .focusColor,
                                                 fontWeight: FontWeight.normal),
                                           ),
                                         );
@@ -423,17 +437,18 @@ class _RegisterDesignState extends State<RegisterDesign> {
                           DropdownButtonFormField<LoadCountry>(
                             isExpanded: true,
                             decoration: InputDecoration(
-                                fillColor: Colors.white,
+                                fillColor: Theme.of(context).focusColor,
                                 enabledBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
+                                      color: Theme.of(context).focusColor,
                                       width: 0.7,
                                     ),
                                     borderRadius: BorderRadius.circular(10)),
                                 focusedBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
                                         width: 0.7,
-                                        color: ColorScheme.light()
-                                            .onSecondary
+                                        color: Theme.of(context)
+                                            .focusColor
                                             .withOpacity(0.5)),
                                     borderRadius: BorderRadius.circular(10))),
                             value: selectedCountry,
@@ -458,7 +473,7 @@ class _RegisterDesignState extends State<RegisterDesign> {
                                   child: Text(
                                     value.name,
                                     style: TextStyle(
-                                        color: ColorScheme.light().onSecondary,
+                                        color: Theme.of(context).focusColor,
                                         fontWeight: FontWeight.normal),
                                   ));
                             }).toList(),

@@ -58,13 +58,14 @@ class CustomEditTextField extends StatelessWidget {
                 ),*/
                 hintText: hintText,
                 labelText: labelText,
+                labelStyle: TextStyle(color: Theme.of(context).focusColor),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(10)),
                   borderSide: BorderSide(color: borderColor),
                 ),
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(10)),
-                  borderSide: BorderSide(color: Colors.black),
+                  borderSide: BorderSide(color: Theme.of(context).focusColor),
                 )),
             readOnly: readOnly,
             obscureText: obsecureText,
