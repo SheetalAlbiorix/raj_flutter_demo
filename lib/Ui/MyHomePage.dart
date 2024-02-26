@@ -1,9 +1,14 @@
+import 'dart:convert';
+
 import 'package:demo/Ui/LoginScreen.dart';
 import 'package:demo/basestring/BaseString.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import '../Model/UserDetailModel.dart';
 
 class MyHomePage extends StatefulWidget {
   @override
@@ -17,6 +22,12 @@ class _MyHomePageState extends State<MyHomePage> {
   late RxBool isLogedin = false.obs;
   late RxBool isRememberme = false.obs;
   final Future<SharedPreferences> prefs = SharedPreferences.getInstance();
+  List<UserDetailModel> _items = [];
+  bool _isLoading = true;
+  final scrollController = ScrollController();
+  int currentPage = 1;
+  int pageSize = 4;
+  bool isLoadingmore = false;
 
   Future<dynamic> getPrefs() async {
     final SharedPreferences _prefs = await prefs;
@@ -41,8 +52,24 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   void initState() {
+    scrollController.addListener(_scrollListener);
+    loadAndSetData();
     getPrefs();
     super.initState();
+  }
+
+  Future<void> loadAndSetData() async {
+    try {
+      List<UserDetailModel> loadedUserData =
+          await readJson(currentPage, pageSize);
+
+      setState(() {
+        _items = loadedUserData;
+        _isLoading = false;
+      });
+    } catch (error) {
+      print("Error loading initial data: $error");
+    }
   }
 
   Future<void> _showLogoutDialog() async {
@@ -93,6 +120,88 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         centerTitle: true,
         backgroundColor: Colors.red,
+      ),
+      body: Center(
+        child: Column(
+          children: [
+            Expanded(
+              child: ListView.builder(
+                  padding: EdgeInsets.all(12.0),
+                  controller: scrollController,
+                  itemCount: _items.length + (isLoadingmore ? 1 : 0),
+                  itemBuilder: (BuildContext context, int index) {
+                    if (index < _items.length) {
+                      return Card(
+                        elevation: 5,
+                        margin: EdgeInsets.all(8),
+                        child: Padding(
+                          padding: EdgeInsets.all(16),
+                          child: Row(
+                            children: <Widget>[
+                              CircleAvatar(
+                                backgroundImage:
+                                    AssetImage(_items[index].image),
+                                radius: 50,
+                              ),
+                              SizedBox(width: 16),
+                              Expanded(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      _items[index].name,
+                                      style: TextStyle(
+                                          fontSize: 18,
+                                          color: Theme.of(context).focusColor),
+                                    ),
+                                    Text(
+                                      _items[index].designation,
+                                      style: TextStyle(
+                                          fontSize: 14,
+                                          color: Theme.of(context).focusColor),
+                                    ),
+                                    Text(
+                                      "Location : ${_items[index].loaction}",
+                                      style: TextStyle(
+                                          color: Theme.of(context).focusColor),
+                                    ),
+                                    Text(
+                                      "Department : ${_items[index].department}",
+                                      style: TextStyle(
+                                          color: Theme.of(context).focusColor),
+                                    ),
+                                    Text(
+                                      "Email : ${_items[index].email}",
+                                      style: TextStyle(
+                                          color: Theme.of(context).focusColor,
+                                          overflow: TextOverflow.ellipsis),
+                                      softWrap: true,
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
+                                    Text(
+                                      "Mobile : ${_items[index].mobile}",
+                                      style: TextStyle(
+                                          color: Theme.of(context).focusColor),
+                                    ),
+                                    // Add more Text widgets for additional details
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      );
+                    } else if (isLoadingmore) {
+                      return Center(child: CircularProgressIndicator());
+                    } else {
+                      return SizedBox.shrink();
+                    }
+                  }),
+            ),
+            /* if (isLoadingmore) // Display the progress indicator if data is still loading
+                CircularProgressIndicator(),*/
+          ],
+        ),
       ),
       drawer: Drawer(
         child: Container(
@@ -191,4 +300,48 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     );
   }
+
+  Future<void> loadMoreData() async {
+    setState(() {
+      isLoadingmore = true;
+    });
+
+    try {
+      // Load the remaining data (5 to n)
+      await Future.delayed(Duration(seconds: 2));
+      List<UserDetailModel> moreData =
+          await readJson(currentPage + 1, pageSize);
+
+      setState(() {
+        _items.addAll(moreData);
+        currentPage = currentPage + 1;
+      });
+    } catch (error) {
+      print("Error loading more data: $error");
+    } finally {
+      setState(() {
+        isLoadingmore = false;
+      });
+    }
+  }
+
+  Future<void> _scrollListener() async {
+    if (scrollController.position.pixels >=
+            scrollController.position.maxScrollExtent &&
+        !isLoadingmore) {
+      print("new data load");
+      await loadMoreData();
+    }
+  }
+}
+
+Future<List<UserDetailModel>> readJson(int page, int pageSize) async {
+  final String response = await rootBundle.loadString('assets/UserDetail.json');
+  final List<dynamic> jsonData = json.decode(response);
+  final List<UserDetailModel> data = jsonData
+      .map((item) => UserDetailModel.fromJson(item))
+      .skip((page - 1) * pageSize) // Skip the already loaded items
+      .take(pageSize) // Take the next set of items
+      .toList();
+  return data;
 }

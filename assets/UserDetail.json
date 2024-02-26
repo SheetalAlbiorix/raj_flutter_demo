@@ -1,0 +1,128 @@
+[
+  {
+    "image": "assets/allence.jpg",
+    "name": "Allence Vakhariya",
+    "Designation": "Software Engineer",
+    "Loaction": "Ahmedabad",
+    "Department": "Software",
+    "Email": "allencev.albiorix@gmail.com",
+    "Mobile": "7990116270"
+  },
+  {
+    "image": "assets/jhanvi.jpg",
+    "name": "Jhanvi Pathar",
+    "Designation": "Software Engineer",
+    "Loaction": "Ahmedabad",
+    "Department": "Software",
+    "Email": "jhanvip.albiorix@gmail.com",
+    "Mobile": "9106849593"
+  },
+  {
+    "image": "assets/khush.jpg",
+    "name": "Khush Pajwani",
+    "Designation": "Software Engineer",
+    "Loaction": "Ahmedabad",
+    "Department": "Software",
+    "Email": "khushp.albiorix@gmail.com",
+    "Mobile": "9429108545"
+  },
+  {
+    "image": "assets/mileniyam.jpg",
+    "name": "Mileniyam Modi",
+    "Designation": "Software Engineer",
+    "Loaction": "Ahmedabad",
+    "Department": "Software",
+    "Email": "milenniyamm.albiorix@gmail.com",
+    "Mobile": "88497968951"
+  },
+  {
+    "image": "assets/palakjpg.jpg",
+    "name": "Palak Vinubhai Ramani",
+    "Designation": "Software Engineer",
+    "Loaction": "Ahmedabad",
+    "Department": "Software",
+    "Email": "palakr.albiorix@gmail.com",
+    "Mobile": "88497968951"
+  },
+  {
+    "image": "assets/shashankh.jpg",
+    "name": "Shashank Adhatrao",
+    "Designation": "Software Engineer",
+    "Loaction": "Ahmedabad",
+    "Department": "Software",
+    "Email": "shashanka.albiorix@gmail.com",
+    "Mobile": "9104077165"
+  },
+  {
+    "image": "assets/sohan.jpg",
+    "name": "Sohan Bhadra",
+    "Designation": "Software Engineer",
+    "Loaction": "Ahmedabad",
+    "Department": "Software",
+    "Email": "sohanb.albiorix@gmail.com",
+    "Mobile": "9662935949"
+  },
+  {
+    "image": "assets/allence.jpg",
+    "name": "Allence Vakhariya",
+    "Designation": "Software Engineer",
+    "Loaction": "Ahmedabad",
+    "Department": "Software",
+    "Email": "allencev.albiorix@gmail.com",
+    "Mobile": "7990116270"
+  },
+  {
+    "image": "assets/jhanvi.jpg",
+    "name": "Jhanvi Pathar",
+    "Designation": "Software Engineer",
+    "Loaction": "Ahmedabad",
+    "Department": "Software",
+    "Email": "jhanvip.albiorix@gmail.com",
+    "Mobile": "9106849593"
+  },
+  {
+    "image": "assets/khush.jpg",
+    "name": "Khush Pajwani",
+    "Designation": "Software Engineer",
+    "Loaction": "Ahmedabad",
+    "Department": "Software",
+    "Email": "khushp.albiorix@gmail.com",
+    "Mobile": "9429108545"
+  },
+  {
+    "image": "assets/mileniyam.jpg",
+    "name": "Mileniyam Modi",
+    "Designation": "Software Engineer",
+    "Loaction": "Ahmedabad",
+    "Department": "Software",
+    "Email": "milenniyamm.albiorix@gmail.com",
+    "Mobile": "88497968951"
+  },
+  {
+    "image": "assets/palakjpg.jpg",
+    "name": "Palak Vinubhai Ramani",
+    "Designation": "Software Engineer",
+    "Loaction": "Ahmedabad",
+    "Department": "Software",
+    "Email": "palakr.albiorix@gmail.com",
+    "Mobile": "88497968951"
+  },
+  {
+    "image": "assets/shashankh.jpg",
+    "name": "Shashank Adhatrao",
+    "Designation": "Software Engineer",
+    "Loaction": "Ahmedabad",
+    "Department": "Software",
+    "Email": "shashanka.albiorix@gmail.com",
+    "Mobile": "9104077165"
+  },
+  {
+    "image": "assets/sohan.jpg",
+    "name": "Sohan Bhadra",
+    "Designation": "Software Engineer",
+    "Loaction": "Ahmedabad",
+    "Department": "Software",
+    "Email": "sohanb.albiorix@gmail.com",
+    "Mobile": "9662935949"
+  }
+]

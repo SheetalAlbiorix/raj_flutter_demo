@@ -9,7 +9,6 @@ import 'customWidget/Themes.dart';
 
 void main() {
   runApp(RouteClass());
-
 }
 
 class MyApp extends StatelessWidget {
@@ -35,17 +34,14 @@ class MyApp extends StatelessWidget {
               return CircularProgressIndicator();
             }
           },
-        )
-    );
+        ));
   }
 
   Future<bool> getPrefs() async {
     final SharedPreferences _prefs = await SharedPreferences.getInstance();
     bool? isLoggedIn = _prefs.getBool("islogedin");
     String? email = _prefs.getString("email");
-    return isLoggedIn!=null && isLoggedIn;
+    return isLoggedIn != null && isLoggedIn;
 /*    return _prefs.getString("email").?isNotEmpty == true;*/
   }
 }
-
-
