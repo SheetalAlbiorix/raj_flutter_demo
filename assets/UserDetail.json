@@ -6,7 +6,11 @@
     "Loaction": "Ahmedabad",
     "Department": "Software",
     "Email": "allencev.albiorix@gmail.com",
-    "Mobile": "7990116270"
+    "Mobile": "7990116270",
+    "myDate": "2022-01-24T12:34:56.789Z",
+    "About": "I am an experienced Flutter Developer with well-developed skills and experience, working as a flutter app developer since 2019. I am able to work well both in a team environment as well as using my own initiative. Eagerness to learn new skills .",
+    "myjob": "My co-workers and management team are social, knowledgeable, and caring, Company culture, Work Management, Challenging work, Work-life balance, Fair pay, Room to grow, Flexibility.",
+    "hobbies": "Coding, Playing Guitar, Anime Drawings, Music"
   },
   {
     "image": "assets/jhanvi.jpg",
@@ -15,7 +19,11 @@
     "Loaction": "Ahmedabad",
     "Department": "Software",
     "Email": "jhanvip.albiorix@gmail.com",
-    "Mobile": "9106849593"
+    "Mobile": "9106849593",
+    "myDate": "2022-06-14T12:34:56.789Z",
+    "About": "At the end of the day, people's job involves people with different learnings. We're complicated, we're always changing, we have millions of things going on in our lives, and learning from those people is ALWAYS a big thing- These motivates me to write on YourQuote I'm working for the mutual development of both; myself and the organization. In my free time you might find me: blogging or listening to audio books or podcasts!",
+    "myjob": "- Have an inspiring team that is self motivated and believes in knowledge sharing. - A Team Lead, who is more excited to make us learn new thing. - Goal Oriented Leadership - Serene working environment",
+    "hobbies": "Blogging, Reading, Journaling, Exploring places and meet new people, Listen podcasts"
   },
   {
     "image": "assets/khush.jpg",
@@ -24,7 +32,11 @@
     "Loaction": "Ahmedabad",
     "Department": "Software",
     "Email": "khushp.albiorix@gmail.com",
-    "Mobile": "9429108545"
+    "Mobile": "9429108545",
+    "myDate": "2023-02-13T12:34:56.789Z",
+    "About": "I am having 2 years of experience in Android mobile app development and eager to learn more in Android and trying to learn Flutter also!",
+    "myjob": "The main thing I love about my job is MOBILE and in it is APPS and GAMES!",
+    "hobbies": "I love to Swim, like to play badminton, computer games and of course mobile games!"
   },
   {
     "image": "assets/mileniyam.jpg",
@@ -33,7 +45,11 @@
     "Loaction": "Ahmedabad",
     "Department": "Software",
     "Email": "milenniyamm.albiorix@gmail.com",
-    "Mobile": "88497968951"
+    "Mobile": "88497968951",
+    "myDate": "2022-05-16T12:34:56.789Z",
+    "About": "Flutter developer with 1.6 years of experience. Self motivated and pro active participant of Cultural activities. Inspired by the Dramas and Mime, I like Acting.",
+    "myjob": "-> Willingness to learn -> Internet surfing -> Quick learner -> Ability to coup with the changing environments -> Flexibility -> Challenging work ->Company culture",
+    "hobbies": "Traveling, drama, dancing, management"
   },
   {
     "image": "assets/palakjpg.jpg",
@@ -42,7 +58,11 @@
     "Loaction": "Ahmedabad",
     "Department": "Software",
     "Email": "palakr.albiorix@gmail.com",
-    "Mobile": "88497968951"
+    "Mobile": "88497968951",
+    "myDate": "2023-02-01T12:34:56.789Z",
+    "About": "I am a flutter development, and I love to learn new things in this field and eager to learn new technologies.",
+    "myjob": "- Having an inspiring team that is self motivated and believes in knowledge sharing. Company culture, Work Management, Challenging work, Flexibility.",
+    "hobbies": "I am intrested in listening music and travelling."
   },
   {
     "image": "assets/shashankh.jpg",
@@ -51,7 +71,11 @@
     "Loaction": "Ahmedabad",
     "Department": "Software",
     "Email": "shashanka.albiorix@gmail.com",
-    "Mobile": "9104077165"
+    "Mobile": "9104077165",
+    "myDate": "2023-02-13T12:34:56.789Z",
+    "About": "I am having 1.8+ years of experience in mobile app development and eager to learn more in Android and trying to learn Flutter also!",
+    "myjob": "You can learn new things every day, and that's never ends...",
+    "hobbies": "explore new technology, cricket ,Music, traveling"
   },
   {
     "image": "assets/sohan.jpg",
@@ -60,69 +84,62 @@
     "Loaction": "Ahmedabad",
     "Department": "Software",
     "Email": "sohanb.albiorix@gmail.com",
-    "Mobile": "9662935949"
+    "Mobile": "9662935949",
+    "myDate": "2022-06-26T12:34:56.789Z",
+    "About": "#Android l #Flutter | #Dart l #React_Native | #Kotlin",
+    "myjob": "Challenging work Room to grow Fair pay Company culture Work-life balance Flexibility My co-workers and management team are social, knowledgeable and caring.",
+    "hobbies": "Surfing on twitter and getting awareness about latest technology. Reading, Games"
   },
   {
-    "image": "assets/allence.jpg",
-    "name": "Allence Vakhariya",
+    "image": "assets/sheetalma'am.jpg",
+    "name": "Sheetal S Rathod Gajjar",
+    "Designation": "Mobile Project Manager",
+    "Loaction": "Ahmedabad",
+    "Department": "Software",
+    "Email": "sheetal.albiorix@gmail.com",
+    "Mobile": "9909789956",
+    "myDate": "2019-08-26T12:34:56.789Z",
+    "About": "Team Leader who understands how to motivate, plan, track, and monitor the achievement of the team goals. Detail-oriented and efficient, able to encourage the team and form strong team bonding, with strengths and abilities, as well as project and time management.",
+    "myjob": "Challenging work, Room to grow, Fair pay, Company culture, Work-life balance, Flexibility, My co-workers and management team are social, knowledgeable and caring.",
+    "hobbies": "Cooking, Listening to a piece of particular music and podcasts, Dancing, Volunteering & community participation activities"
+  },
+  {
+    "image": null,
+    "name": "Hardik Thakkar",
+    "Designation": "Director",
+    "Loaction": "Ahmedabad",
+    "Department": "Software",
+    "Email": "hardik.albiorix@gmail.com",
+    "Mobile": "9979372772",
+    "myDate": "2018-04-23T12:34:56.789Z",
+    "About": "- No response added yet -",
+    "myjob": "- No response added yet -",
+    "hobbies": "- No response added yet -"
+  },
+  {
+    "image": "assets/sazzad.jpg",
+    "name": "Sazzadhusen Iproliya",
+    "Designation": "Team Lead",
+    "Loaction": "Ahmedabad",
+    "Department": "Software",
+    "Email": "sazzadhusen.albiorix@gmail.com",
+    "Mobile": "9925342734",
+    "myDate": "2021-04-12T12:34:56.789Z",
+    "About": "iOS, React Native, React Js, Node Js and Blockchain Technology Expert",
+    "myjob": "I love the challenge of coming in every day and trying to figure out how I am going to resolve. The whole team works together to make them happen. We all support each other and work together to offer creative feedback and then make our ideas a reality. I love being appreciated and listened to.",
+    "hobbies": "Observing, Reading, Learning"
+  },
+  {
+    "image": null,
+    "name": "Raj Shah",
     "Designation": "Software Engineer",
     "Loaction": "Ahmedabad",
     "Department": "Software",
-    "Email": "allencev.albiorix@gmail.com",
-    "Mobile": "7990116270"
-  },
-  {
-    "image": "assets/jhanvi.jpg",
-    "name": "Jhanvi Pathar",
-    "Designation": "Software Engineer",
-    "Loaction": "Ahmedabad",
-    "Department": "Software",
-    "Email": "jhanvip.albiorix@gmail.com",
-    "Mobile": "9106849593"
-  },
-  {
-    "image": "assets/khush.jpg",
-    "name": "Khush Pajwani",
-    "Designation": "Software Engineer",
-    "Loaction": "Ahmedabad",
-    "Department": "Software",
-    "Email": "khushp.albiorix@gmail.com",
-    "Mobile": "9429108545"
-  },
-  {
-    "image": "assets/mileniyam.jpg",
-    "name": "Mileniyam Modi",
-    "Designation": "Software Engineer",
-    "Loaction": "Ahmedabad",
-    "Department": "Software",
-    "Email": "milenniyamm.albiorix@gmail.com",
-    "Mobile": "88497968951"
-  },
-  {
-    "image": "assets/palakjpg.jpg",
-    "name": "Palak Vinubhai Ramani",
-    "Designation": "Software Engineer",
-    "Loaction": "Ahmedabad",
-    "Department": "Software",
-    "Email": "palakr.albiorix@gmail.com",
-    "Mobile": "88497968951"
-  },
-  {
-    "image": "assets/shashankh.jpg",
-    "name": "Shashank Adhatrao",
-    "Designation": "Software Engineer",
-    "Loaction": "Ahmedabad",
-    "Department": "Software",
-    "Email": "shashanka.albiorix@gmail.com",
-    "Mobile": "9104077165"
-  },
-  {
-    "image": "assets/sohan.jpg",
-    "name": "Sohan Bhadra",
-    "Designation": "Software Engineer",
-    "Loaction": "Ahmedabad",
-    "Department": "Software",
-    "Email": "sohanb.albiorix@gmail.com",
-    "Mobile": "9662935949"
+    "Email": "rajh.albiorix@gmail.com",
+    "Mobile": "9409136777",
+    "myDate": "2024-01-16T12:34:56.789Z",
+    "About": "Hello My Name Is Raj , I was Complete My Bachelor's From Gls University. Also i was Complete My Master's\nFrom Gls University. And I Have 2 Years Of Experience in Corporate Life As a Android Developer",
+    "myjob": "Android development allows you to be creative and innovative. You get to design and build mobile apps that can have a real impact on people's lives or provide entertainment.",
+    "hobbies": "My hobbies are\n\n1) Traveling\n2) Tracking\n3) Playing Games"
   }
 ]

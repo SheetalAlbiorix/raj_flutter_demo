@@ -9,6 +9,7 @@ import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../Model/UserDetailModel.dart';
+import 'DetailScreen.dart';
 
 class MyHomePage extends StatefulWidget {
   @override
@@ -28,6 +29,8 @@ class _MyHomePageState extends State<MyHomePage> {
   int currentPage = 1;
   int pageSize = 4;
   bool isLoadingmore = false;
+  late TextEditingController searchController = TextEditingController();
+  List<UserDetailModel> _filteredItems = [];
 
   Future<dynamic> getPrefs() async {
     final SharedPreferences _prefs = await prefs;
@@ -53,6 +56,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     scrollController.addListener(_scrollListener);
+    _items = _filteredItems;
     loadAndSetData();
     getPrefs();
     super.initState();
@@ -65,6 +69,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
       setState(() {
         _items = loadedUserData;
+        /* _filteredItems = loadedUserData;*/
         _isLoading = false;
       });
     } catch (error) {
@@ -107,8 +112,21 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
+  List<UserDetailModel> _filterItems(String query) {
+    return _filteredItems
+        .where((item) => item.name.toLowerCase().contains(query.toLowerCase()))
+        .toList();
+  }
+
+  void filterSearchResults(String query) {
+    setState(() {
+      _items = _filterItems(query);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+    List<String> namepart = [];
     return Scaffold(
       appBar: AppBar(
         iconTheme: IconThemeData(color: Colors.white),
@@ -124,6 +142,21 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         child: Column(
           children: [
+            Padding(
+              padding: EdgeInsets.only(top: 12, left: 12, right: 12),
+              child: TextField(
+                onChanged: (value) {
+                  filterSearchResults(value);
+                },
+                controller: searchController,
+                decoration: InputDecoration(
+                    labelText: "Search",
+                    hintText: "Search",
+                    prefixIcon: Icon(Icons.search),
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(25.0)))),
+              ),
+            ),
             Expanded(
               child: ListView.builder(
                   padding: EdgeInsets.all(12.0),
@@ -131,63 +164,116 @@ class _MyHomePageState extends State<MyHomePage> {
                   itemCount: _items.length + (isLoadingmore ? 1 : 0),
                   itemBuilder: (BuildContext context, int index) {
                     if (index < _items.length) {
-                      return Card(
-                        elevation: 5,
-                        margin: EdgeInsets.all(8),
-                        child: Padding(
-                          padding: EdgeInsets.all(16),
-                          child: Row(
-                            children: <Widget>[
-                              CircleAvatar(
-                                backgroundImage:
-                                    AssetImage(_items[index].image),
-                                radius: 50,
-                              ),
-                              SizedBox(width: 16),
-                              Expanded(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      _items[index].name,
-                                      style: TextStyle(
-                                          fontSize: 18,
-                                          color: Theme.of(context).focusColor),
-                                    ),
-                                    Text(
-                                      _items[index].designation,
-                                      style: TextStyle(
-                                          fontSize: 14,
-                                          color: Theme.of(context).focusColor),
-                                    ),
-                                    Text(
-                                      "Location : ${_items[index].loaction}",
-                                      style: TextStyle(
-                                          color: Theme.of(context).focusColor),
-                                    ),
-                                    Text(
-                                      "Department : ${_items[index].department}",
-                                      style: TextStyle(
-                                          color: Theme.of(context).focusColor),
-                                    ),
-                                    Text(
-                                      "Email : ${_items[index].email}",
-                                      style: TextStyle(
-                                          color: Theme.of(context).focusColor,
-                                          overflow: TextOverflow.ellipsis),
-                                      softWrap: true,
-                                      overflow: TextOverflow.ellipsis,
-                                    ),
-                                    Text(
-                                      "Mobile : ${_items[index].mobile}",
-                                      style: TextStyle(
-                                          color: Theme.of(context).focusColor),
-                                    ),
-                                    // Add more Text widgets for additional details
-                                  ],
+                      return GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  DetailScreen(item: _items[index]),
+                            ),
+                          );
+                          /*   Fluttertoast.showToast(
+                              msg: index.toString(),
+                              toastLength: Toast.LENGTH_SHORT,
+                              gravity: ToastGravity.CENTER,
+                              timeInSecForIosWeb: 1,
+                              backgroundColor: Colors.red,
+                              textColor: Colors.white,
+                              fontSize: 16.0
+                          );*/
+                        },
+                        child: Card(
+                          elevation: 5,
+                          margin: EdgeInsets.all(8),
+                          child: Padding(
+                            padding: EdgeInsets.all(16),
+                            child: Row(
+                              children: <Widget>[
+                                CircleAvatar(
+                                  backgroundImage: _items[index].image == null
+                                      ? null
+                                      : AssetImage(_items[index].image!),
+                                  backgroundColor: _items[index].image == null
+                                      ? Colors.white
+                                      : null,
+                                  radius: 50,
+                                  child: _items[index].image == null
+                                      ? Padding(
+                                          padding: EdgeInsets.all(10),
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              for (String word in _items[index]
+                                                  .name
+                                                  .split(" "))
+                                                Text(
+                                                  word.isNotEmpty
+                                                      ? word[0]
+                                                      : '',
+                                                  style: TextStyle(
+                                                      fontSize: 35,
+                                                      fontWeight:
+                                                          FontWeight.bold),
+                                                ),
+                                            ],
+                                          ),
+                                        )
+                                      : null,
                                 ),
-                              ),
-                            ],
+                                SizedBox(width: 16),
+                                Expanded(
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        _items[index].name,
+                                        style: TextStyle(
+                                            fontSize: 18,
+                                            color:
+                                                Theme.of(context).focusColor),
+                                      ),
+                                      Text(
+                                        _items[index].designation,
+                                        style: TextStyle(
+                                            fontSize: 14,
+                                            color:
+                                                Theme.of(context).focusColor),
+                                      ),
+                                      Text(
+                                        "Location : ${_items[index].loaction}",
+                                        style: TextStyle(
+                                            color:
+                                                Theme.of(context).focusColor),
+                                      ),
+                                      Text(
+                                        "Department : ${_items[index].department}",
+                                        style: TextStyle(
+                                            color:
+                                                Theme.of(context).focusColor),
+                                      ),
+                                      Text(
+                                        "Email : ${_items[index].email}",
+                                        style: TextStyle(
+                                            color: Theme.of(context).focusColor,
+                                            overflow: TextOverflow.ellipsis),
+                                        softWrap: true,
+                                        overflow: TextOverflow.ellipsis,
+                                      ),
+                                      Text(
+                                        "Mobile : ${_items[index].mobile}",
+                                        style: TextStyle(
+                                            color:
+                                                Theme.of(context).focusColor),
+                                      ),
+                                      // Add more Text widgets for additional details
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       );
@@ -313,6 +399,7 @@ class _MyHomePageState extends State<MyHomePage> {
           await readJson(currentPage + 1, pageSize);
 
       setState(() {
+        _filteredItems.addAll(moreData);
         _items.addAll(moreData);
         currentPage = currentPage + 1;
       });

@@ -42,6 +42,8 @@ class RouteClass extends StatelessWidget {
             return MaterialPageRoute(builder: (context) => LoginScreen());
           case '/ApiCalling':
             return MaterialPageRoute(builder: (context) => ApiCallingScreen());
+          /* case '/DetailScreen':
+            return MaterialPageRoute(builder: (context) => DetailScreen(item:UserDetailModel()));*/
           default:
             return MaterialPageRoute(builder: (context) => MyApp());
         }
