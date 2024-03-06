@@ -19,37 +19,39 @@ class UserDetailModel {
   String department;
   String email;
   String mobile;
+  String myDate;
   String? about;
   String? myjob;
   String? hobbies;
-  String date;
 
-  UserDetailModel(
-      {this.image,
-      required this.name,
-      required this.designation,
-      required this.loaction,
-      required this.department,
-      required this.email,
-      required this.mobile,
-      this.about,
-      this.myjob,
-      this.hobbies,
-      required this.date});
+  UserDetailModel({
+    this.image,
+    required this.name,
+    required this.designation,
+    required this.loaction,
+    required this.department,
+    required this.email,
+    required this.mobile,
+    required this.myDate,
+    this.about,
+    this.myjob,
+    this.hobbies,
+  });
 
   factory UserDetailModel.fromJson(Map<String, dynamic> json) =>
       UserDetailModel(
-          image: json["image"],
-          name: json["name"],
-          designation: json["Designation"],
-          loaction: json["Loaction"],
-          department: json["Department"],
-          email: json["Email"],
-          mobile: json["Mobile"],
-          about: json["About"],
-          myjob: json["myjob"],
-          hobbies: json["hobbies"],
-          date: json["myDate"]);
+        image: json["image"],
+        name: json["name"],
+        designation: json["Designation"],
+        loaction: json["Loaction"],
+        department: json["Department"],
+        email: json["Email"],
+        myDate: json["myDate"],
+        mobile: json["Mobile"],
+        about: json["About"],
+        myjob: json["myjob"],
+        hobbies: json["hobbies"],
+      );
 
   Map<String, dynamic> toJson() => {
         "image": image,
@@ -59,9 +61,9 @@ class UserDetailModel {
         "Department": department,
         "Email": email,
         "Mobile": mobile,
+        "myDate": myDate,
         "About": about,
         "myjob": myjob,
         "hobbies": hobbies,
-        "myDate": date
       };
 }

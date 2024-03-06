@@ -58,4 +58,25 @@ class BaseString{
   static const String cancel = "Cancel";
   static const String range = "^([1-9]|[1-5][0-9]|60|all)\$";
   static const String rangephone = "[0-9]";
+
+  static const String formnamelbl = "Enter your name";
+  static const String formnamehint = "Name";
+  static const String formdesignationhint = "Enter your Designation";
+  static const String formdesignationlbl = "Designation";
+  static const String formlocationhint = "Enter your location";
+  static const String formlocationlbl = "Location";
+  static const String Departmenthint = "Enter your Department";
+  static const String Departmentlbl = "Department";
+  static const String formemailhint = "Enter valid email";
+  static const String formemaillbl = "Email";
+  static const String formphonehint = "Enter Your Phone no";
+  static const String formphonelbl = "Number";
+  static const String formdatehint = "Select Your Date";
+  static const String formdatelbl = "Date";
+  static const String formabouthint = "Tell Me About Your Self ";
+  static const String formaboutlbl = "About";
+  static const String formaboujobthint = "Tell Me About Your job ";
+  static const String formaboutjoblbl = "About job";
+  static const String formhobbihint = "Enter your Hobbies ";
+  static const String formhobbilbl = "Hobbies";
 }

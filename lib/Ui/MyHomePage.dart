@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:demo/Ui/LoginScreen.dart';
 import 'package:demo/basestring/BaseString.dart';
@@ -6,10 +7,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../Model/UserDetailModel.dart';
 import 'DetailScreen.dart';
+import 'FormData.dart';
 
 class MyHomePage extends StatefulWidget {
   @override
@@ -138,6 +141,17 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         centerTitle: true,
         backgroundColor: Colors.red,
+        actions: [
+          IconButton(
+              onPressed: () {
+                Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(builder: (context) => FormDetail()));
+              },
+              icon: Icon(
+                Icons.add,
+                size: 30,
+              ))
+        ],
       ),
       body: Center(
         child: Column(
@@ -423,12 +437,25 @@ class _MyHomePageState extends State<MyHomePage> {
 }
 
 Future<List<UserDetailModel>> readJson(int page, int pageSize) async {
-  final String response = await rootBundle.loadString('assets/UserDetail.json');
-  final List<dynamic> jsonData = json.decode(response);
+  Directory cacheDir = await getTemporaryDirectory();
+  String cacheFilePath = '${cacheDir.path}/UserDetail.json';
+
+  File cacheFile = File(cacheFilePath);
+
+  if (!cacheFile.existsSync()) {
+    // If the cache file doesn't exist, load data from assets and save it to the cache
+    final String response =
+        await rootBundle.loadString('assets/UserDetail.json');
+    cacheFile.writeAsStringSync(response);
+  }
+
+  final String cacheContent = cacheFile.readAsStringSync();
+  final List<dynamic> jsonData = json.decode(cacheContent);
   final List<UserDetailModel> data = jsonData
       .map((item) => UserDetailModel.fromJson(item))
-      .skip((page - 1) * pageSize) // Skip the already loaded items
-      .take(pageSize) // Take the next set of items
+      .skip((page - 1) * pageSize)
+      .take(pageSize)
       .toList();
+
   return data;
 }

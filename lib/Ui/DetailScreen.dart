@@ -1,4 +1,4 @@
-import 'package:demo/Model/UserDetailModel.dart';
+  import 'package:demo/Model/UserDetailModel.dart';
 import 'package:demo/Ui/TimeLine.dart';
 import 'package:flutter/material.dart';
 
@@ -60,7 +60,7 @@ class DetailScreen extends StatelessWidget {
                 children: [
                   SummaryScreen(item: item),
                   WallActivity(name: item.name),
-                  TimeLine(date: item.date)
+                  TimeLine(date: item.myDate)
                 ],
               ))
             ],
