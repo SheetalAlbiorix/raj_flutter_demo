@@ -173,133 +173,114 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             Expanded(
               child: ListView.builder(
-                  padding: EdgeInsets.all(12.0),
-                  controller: scrollController,
-                  itemCount: _items.length + (isLoadingmore ? 1 : 0),
-                  itemBuilder: (BuildContext context, int index) {
-                    if (index < _items.length) {
-                      return GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) =>
-                                  DetailScreen(item: _items[index]),
-                            ),
-                          );
-                          /*   Fluttertoast.showToast(
-                              msg: index.toString(),
-                              toastLength: Toast.LENGTH_SHORT,
-                              gravity: ToastGravity.CENTER,
-                              timeInSecForIosWeb: 1,
-                              backgroundColor: Colors.red,
-                              textColor: Colors.white,
-                              fontSize: 16.0
-                          );*/
-                        },
-                        child: Card(
-                          elevation: 5,
-                          margin: EdgeInsets.all(8),
-                          child: Padding(
-                            padding: EdgeInsets.all(16),
-                            child: Row(
-                              children: <Widget>[
-                                CircleAvatar(
-                                  backgroundImage: _items[index].image == null
-                                      ? null
-                                      : AssetImage(_items[index].image!),
-                                  backgroundColor: _items[index].image == null
-                                      ? Colors.white
-                                      : null,
-                                  radius: 50,
-                                  child: _items[index].image == null
-                                      ? Padding(
-                                          padding: EdgeInsets.all(10),
-                                          child: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: [
-                                              for (String word in _items[index]
-                                                  .name
-                                                  .split(" "))
-                                                Text(
-                                                  word.isNotEmpty
-                                                      ? word[0]
-                                                      : '',
-                                                  style: TextStyle(
-                                                      fontSize: 35,
-                                                      fontWeight:
-                                                          FontWeight.bold),
-                                                ),
-                                            ],
-                                          ),
-                                        )
-                                      : null,
+                padding: EdgeInsets.all(12.0),
+                controller: scrollController,
+                itemCount: _items.length + (isLoadingmore ? 1 : 0),
+                itemBuilder: (BuildContext context, int index) {
+                  if (index < _items.length) {
+                    return GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                DetailScreen(item: _items[index]),
+                          ),
+                        );
+                      },
+                      child: Card(
+                        elevation: 5,
+                        margin: EdgeInsets.all(8),
+                        child: Padding(
+                          padding: EdgeInsets.all(16),
+                          child: Row(
+                            children: <Widget>[
+                              CircleAvatar(
+                                backgroundImage: _items[index].image == null
+                                    ? null
+                                    : AssetImage(_items[index].image!),
+                                backgroundColor: _items[index].image == null
+                                    ? Colors.white
+                                    : null,
+                                radius: 50,
+                                child: _items[index].image == null
+                                    ? Padding(
+                                        padding: EdgeInsets.all(10),
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            for (String word in _items[index]
+                                                .name
+                                                .split(" "))
+                                              Text(
+                                                word.isNotEmpty ? word[0] : '',
+                                                style: TextStyle(
+                                                    fontSize: 35,
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              ),
+                                          ],
+                                        ),
+                                      )
+                                    : null,
+                              ),
+                              SizedBox(width: 16),
+                              Expanded(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      _items[index].name,
+                                      style: TextStyle(
+                                          fontSize: 18,
+                                          color: Theme.of(context).focusColor),
+                                    ),
+                                    Text(
+                                      _items[index].designation,
+                                      style: TextStyle(
+                                          fontSize: 14,
+                                          color: Theme.of(context).focusColor),
+                                    ),
+                                    Text(
+                                      "Location : ${_items[index].loaction}",
+                                      style: TextStyle(
+                                          color: Theme.of(context).focusColor),
+                                    ),
+                                    Text(
+                                      "Department : ${_items[index].department}",
+                                      style: TextStyle(
+                                          color: Theme.of(context).focusColor),
+                                    ),
+                                    Text(
+                                      "Email : ${_items[index].email}",
+                                      style: TextStyle(
+                                          color: Theme.of(context).focusColor,
+                                          overflow: TextOverflow.ellipsis),
+                                      softWrap: true,
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
+                                    Text(
+                                      "Mobile : ${_items[index].mobile}",
+                                      style: TextStyle(
+                                          color: Theme.of(context).focusColor),
+                                    ),
+                                  ],
                                 ),
-                                SizedBox(width: 16),
-                                Expanded(
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        _items[index].name,
-                                        style: TextStyle(
-                                            fontSize: 18,
-                                            color:
-                                                Theme.of(context).focusColor),
-                                      ),
-                                      Text(
-                                        _items[index].designation,
-                                        style: TextStyle(
-                                            fontSize: 14,
-                                            color:
-                                                Theme.of(context).focusColor),
-                                      ),
-                                      Text(
-                                        "Location : ${_items[index].loaction}",
-                                        style: TextStyle(
-                                            color:
-                                                Theme.of(context).focusColor),
-                                      ),
-                                      Text(
-                                        "Department : ${_items[index].department}",
-                                        style: TextStyle(
-                                            color:
-                                                Theme.of(context).focusColor),
-                                      ),
-                                      Text(
-                                        "Email : ${_items[index].email}",
-                                        style: TextStyle(
-                                            color: Theme.of(context).focusColor,
-                                            overflow: TextOverflow.ellipsis),
-                                        softWrap: true,
-                                        overflow: TextOverflow.ellipsis,
-                                      ),
-                                      Text(
-                                        "Mobile : ${_items[index].mobile}",
-                                        style: TextStyle(
-                                            color:
-                                                Theme.of(context).focusColor),
-                                      ),
-                                      // Add more Text widgets for additional details
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
                         ),
-                      );
-                    } else if (isLoadingmore) {
-                      return Center(child: CircularProgressIndicator());
-                    } else {
-                      return SizedBox.shrink();
-                    }
-                  }),
+                      ),
+                    );
+                  } else if (isLoadingmore) {
+                    return Center(child: CircularProgressIndicator());
+                  } else {
+                    return SizedBox.shrink();
+                  }
+                },
+              ),
             ),
-            /* if (isLoadingmore) // Display the progress indicator if data is still loading
-                CircularProgressIndicator(),*/
           ],
         ),
       ),

@@ -318,6 +318,19 @@ class _MyCustomFormState extends State<MyCustomForm> {
                         await file.writeAsString(updatedJsonString,
                             flush: true);
 
+                        final directory =
+                            await getApplicationDocumentsDirectory();
+                        final path = directory.path;
+                        final MyFilePath = "$path/json.txt";
+
+                        File localfile = File(MyFilePath);
+                        await localfile.writeAsString(updatedJsonString,
+                            flush: true);
+                        var readingfile = await localfile.readAsString();
+
+                        print(
+                            "-------------------------$readingfile----------------------------------");
+
                         Navigator.of(context).pushReplacement(
                           MaterialPageRoute(
                             builder: (context) => MyHomePage(),
